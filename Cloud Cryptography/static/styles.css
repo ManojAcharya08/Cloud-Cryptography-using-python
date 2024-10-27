@@ -1,0 +1,199 @@
+/* General Body Styles */
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #2e2e2e;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Container for main content */
+.container {
+    background-color: #3a3a3a;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    text-align: center;
+    border: 2px solid #00bfff;
+    transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+/* Main Heading */
+h1 {
+    color: #00bfff;
+    font-size: 32px;
+    font-weight: bold;
+    text-shadow: 0 0 15px rgba(0, 191, 255, 0.7);
+    margin-bottom: 20px;
+}
+
+/* Subheading */
+h2 {
+    color: #e0e0e0;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* Description Text */
+.description {
+    color: #b0b0b0;
+    margin-bottom: 30px;
+}
+
+/* Navigation Buttons */
+.nav-options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.nav-options button {
+    padding: 12px 24px;
+    border: 2px solid #00bfff;
+    background-color: #1a1a1a;
+    color: #00bfff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+/* Navigation Buttons Hover Effect */
+.nav-options button:hover {
+    background-color: #00bfff;
+    color: #1a1a1a;
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+}
+
+/* Section Styling */
+section {
+    padding: 25px;
+    background-color: #3a3a3a;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    margin-top: 20px;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Labels */
+label {
+    margin: 10px 0 5px;
+    color: #00bfff;
+    text-shadow: 0 0 5px rgba(0, 191, 255, 0.7);
+}
+
+/* Input Fields */
+input[type="file"],
+input[type="password"],
+input[type="text"] {
+    padding: 14px;
+    width: 100%;
+    margin-bottom: 20px;
+    border: 2px solid #00bfff;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+}
+
+/* Button Row Container */
+.button-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Buttons */
+button {
+    padding: 14px 28px;
+    border: 2px solid #00bfff;
+    background-color: #1a1a1a;
+    color: #00bfff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+button:hover {
+    background-color: #00bfff;
+    color: #1a1a1a;
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
+}
+
+/* Feedback Message Styles */
+.feedback-messages {
+    margin-top: 20px;
+}
+
+.message {
+    position: relative;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
+    display: block;
+    transition: opacity 0.5s ease-out;
+}
+
+.message.success {
+    color: #00ff00;
+    background-color: #1a1a1a;
+    border: 2px solid #00ff00;
+}
+
+.message.error {
+    color: #ff0000;
+    background-color: #1a1a1a;
+    border: 2px solid #ff0000;
+}
+
+/* Error Theme */
+.error-theme {
+    --border-color: #ff0000;
+    --box-shadow-color: rgba(255, 0, 0, 0.8);
+}
+
+.error-theme .container {
+    border-color: var(--border-color);
+    box-shadow: 0 0 20px var(--box-shadow-color);
+}
+
+.error-theme h1 {
+    color: var(--border-color);
+    text-shadow: 0 0 15px var(--border-color);
+}
+
+.error-theme .nav-options button,
+.error-theme button {
+    background-color: var(--border-color);
+    color: #1a1a1a;
+    border-color: var(--border-color);
+    box-shadow: 0 0 12px var(--box-shadow-color);
+}
+
+.error-theme input[type="file"],
+.error-theme input[type="password"],
+.error-theme input[type="text"] {
+    border-color: var(--border-color);
+    box-shadow: 0 0 5px var(--box-shadow-color);
+    color: var(--border-color);
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Cryptography</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script defer src="{{ url_for('static', filename='scripts.js') }}"></script>
+    <style>
+        .message {
+            display: none;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: opacity 0.5s ease;
+        }
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Main Header -->
+        <div id="main-header">
+            <h1>Cloud Cryptography</h1>
+            <p class="description">Select the option below to perform an operation.</p>
+        </div>
+
+        <!-- Main Navigation -->
+        <div id="main-interface">
+            <div class="nav-options">
+                <button id="introduction-nav">Manual</button>
+                <button id="encrypt-upload-nav">Encrypt and Upload</button>
+                <button id="decrypt-retrieve-nav">Decrypt and Retrieve</button>
+            </div>
+        </div>
+
+        <!-- Introduction Section -->
+        <section id="introduction-section" style="display: none;">
+            <h2>Walkthrough</h2>
+            <p>This tool allows you to securely encrypt and upload files to the cloud, and decrypt them when needed. Each file is encrypted using a password you provide, ensuring that your data is safe.</p>
+            <p>1. Encrypt and Upload: Select a file and enter a password to encrypt and upload it securely.</p>    
+            <p>2. Decrypt and Retrieve: Enter the file name and password to decrypt and retrieve your file.</p>    
+            <button class="back-btn">Back</button>
+        </section>
+
+        <!-- Encrypt and Upload Section -->
+        <section id="encrypt-upload-section" style="display: none;">
+            <h2>Encrypt and Upload</h2>
+            <form id="encrypt-upload-form" action="{{ url_for('encrypt_upload') }}" method="POST" enctype="multipart/form-data">
+                <label for="file">Select file to encrypt and upload:</label>
+                <input type="file" id="file" name="file" required>
+                <label for="password">Enter Password (min 4 characters):</label>
+                <input type="password" id="password" name="password" required minlength="4">
+                <div class="button-row">
+                    <button type="submit" class="submit-btn">Submit</button>
+                    <button type="reset" class="clear-btn">Clear</button>
+                    <button type="button" class="back-btn">Back</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Decrypt and Retrieve Section -->
+        <section id="decrypt-retrieve-section" style="display: none;">
+            <h2>Decrypt and Retrieve</h2>
+            <form id="decrypt-retrieve-form" action="{{ url_for('decrypt_retrieve') }}" method="POST">
+                <label for="file_name">Enter the filename to retrieve:</label>
+                <input type="text" id="file_name" name="file_name" required>
+                <label for="password">Enter Password (min 4 characters):</label>
+                <input type="password" id="password" name="password" required minlength="4">
+                <div class="button-row">
+                    <button type="submit" class="submit-btn">Submit</button>
+                    <button type="reset" class="clear-btn">Clear</button>
+                    <button type="button" class="back-btn">Back</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Flash Messages -->
+        <div id="flash-messages">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="message {{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle hiding flash messages after 10 seconds
+        document.addEventListener('DOMContentLoaded', function() {
+            var messages = document.querySelectorAll('.message');
+            messages.forEach(function(message) {
+                message.style.display = 'block'; // Ensure the message is visible
+                setTimeout(function() {
+                    message.style.opacity = 0;
+                    setTimeout(function() {
+                        message.style.display = 'none';
+                    }, 500); // Match this with CSS transition duration
+                }, 10000); // 10 seconds
+    
+                // Clear message from session storage to prevent showing after refresh
+                window.onbeforeunload = function() {
+                    sessionStorage.clear();
+                };
+            });
+    });
+    </script>
+</body>
+</html>
