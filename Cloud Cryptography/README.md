@@ -24,7 +24,7 @@ This project is a web-based application for encrypting and decrypting files usin
 
 ## Requirements
 
-- Python 3.x
+- Python 3.1
 - Flask
 - Cryptography library
 - Backblaze B2 SDK for Python (b2sdk)
